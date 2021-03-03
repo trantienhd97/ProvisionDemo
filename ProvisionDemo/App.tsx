@@ -9,110 +9,60 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 
 declare const global: {HermesInternal: null | {}};
 
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.titleScreen}>Home</Text>
+        </View>
+        <View style={styles.contentView}>
+          <Pressable style={styles.btnView}>
+            <Text style={styles.titleBtn}>Thêm thiết bị</Text>
+          </Pressable>
+        </View>
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    flex: 1,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  header: {
+    width: '100%',
+    height: '10%',
+    backgroundColor: 'blue',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
+  titleScreen: {
     fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
+    fontWeight: 'bold',
+    lineHeight: 22,
+    color: 'white',
   },
-  highlight: {
-    fontWeight: '700',
+  contentView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  btnView: {
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingBottom: 8,
+    paddingTop: 8,
+    backgroundColor: 'blue',
+    borderRadius: 5,
+  },
+  titleBtn: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
-
 export default App;
