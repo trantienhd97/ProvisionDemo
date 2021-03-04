@@ -9,11 +9,29 @@
  */
 
 import React from 'react';
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  NativeModules,
+  Alert,
+} from 'react-native';
 
 declare const global: {HermesInternal: null | {}};
 
 const App = () => {
+  const handleAdd = React.useCallback(() => {
+    Alert.alert('OK');
+  }, []);
+
+  const handleAddDivices = React.useCallback(() => {
+    NativeModules.OTPContainer.createEvent('Hello', (e: boolean) => {
+      if (e) {
+        handleAdd();
+      }
+    });
+  }, []);
   return (
     <>
       <View style={styles.container}>
@@ -21,7 +39,7 @@ const App = () => {
           <Text style={styles.titleScreen}>Home</Text>
         </View>
         <View style={styles.contentView}>
-          <Pressable style={styles.btnView}>
+          <Pressable style={styles.btnView} onPress={handleAddDivices}>
             <Text style={styles.titleBtn}>Thêm thiết bị</Text>
           </Pressable>
         </View>
